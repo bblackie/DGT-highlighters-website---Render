@@ -37,6 +37,20 @@ If the project later needs a package such as requests, you would install it like
 
 python -m pip install flask
 
+
+## OPTION B: using a requirements file
+
+To install all dependencies frOm a requirements file, if provided
+NB: If you don't have a requirements file, see 'Extra tasks' below for how to create one
+```
+pip install -r requirements.txt
+```
+
+### How to create one?
+
+pip freeze > requirements.txt
+
+
 Your first flask app
 
 Add an app.py file with the following code:
