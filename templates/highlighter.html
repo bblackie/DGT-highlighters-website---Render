@@ -1,0 +1,61 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+  <!-- Info on each highlighter -->
+  <div class="info">
+    
+
+    <ul>
+        {% for part in highlighter[4].split('Key Features:') %}
+            {% if loop.first %}
+                {% for line in part.split('.') %}
+                    {% if line.strip() %}
+                        <li>{{ line.strip() }}.</li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <li><strong>Key Features:</strong>
+                    <ul>
+                        {% for feature in part.split('.') %}
+                            {% if feature.strip() %}
+                                <li>{{ feature.strip() }}.</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <p><strong>Price:</strong> ${{ highlighter[3] }}</p>
+
+  
+    <!-- Photo-gallery -->
+      <div class="photo-gallery">
+  <img src="{{ highlighter[5] }}" alt="{{ highlighter[2] }}">
+  <img src="{{ highlighter[6] }}" alt="{{ highlighter[2] }}">
+  {% if highlighter[7] %}
+  <img src="{{ highlighter[7] }}" alt="{{ highlighter[2] }}">
+  {% endif %}
+  {% if highlighter[8] %}
+  <img src="{{ highlighter[8] }}" alt="{{ highlighter[2] }}">
+  {% endif %}
+  {% if highlighter[9] %}
+  <img src="{{ highlighter[9] }}" alt="{{ highlighter[2] }}">
+  {% endif %}
+</div>
+  
+  
+
+
+    <!-- Just one highlighter-->
+ <!-- A two column grid -->
+<div class="two-column">
+ <video width="640" height="360" controls>
+           <source src="{{ url_for('static', filename=highlighter[10].strip()) }}" type="video/mp4">
+           
+           Your browser does not support the video tag.
+  </video>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+
+<!-- Brand buttons of the highlighters -->
+<div class="brand-buttons">
+    {% for brand in brands %}
+        <a href="/brand/{{ brand[0] }}" class="brand-btn">{{ brand[1] }}</a>
+    {% endfor %}
+</div>
+
+<!-- Home page goes here-->
+ <!-- A 5 column grid -->
+  <div class="five-column">
+    {% for highlighter in results %}
+    <a href="{{ url_for('highlighter', id=highlighter[0]) }}">
+      <div class="w3-card-4">
+           <!-- Name then image -->
+           <h1>{{ highlighter[1] }} {{ highlighter[2] }}</h1>
+           <img src="{{ highlighter [3]}}" alt= "{{ highlighter[2] }}" style="width:100%">
+
+    </div>
+    </a>
+    {% endfor %}
+</div>
+
+
+    
+{% endblock %}
